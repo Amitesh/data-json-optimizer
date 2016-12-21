@@ -60,7 +60,7 @@ function createFinalDataJsonFiles(appPath) {
       gameData = _.merge({}, gameData, require(file));
     });
 
-    gameDataInCamelCase = formatKeyAsCamelCase(gameData);
+    gameDataInCamelCase = formatKeyAsCamelCase(_.cloneDeep(gameData));
 
     writeFile(path.join(appPath, 'data', 'game-data.json'),
       JSON.stringify(gameData, null, '\t'));
@@ -128,7 +128,7 @@ export default class DataJsonOptimizer {
      * Convert the data.json files to final file.
      */
     compiler.plugin('compile', (params) => {
-      let appPath = params && params.normalModuleFactory.context;
+      let appPath = compiler.context;
       createFinalDataJsonFiles(appPath);
     });
   }
