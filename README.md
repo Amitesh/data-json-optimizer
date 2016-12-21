@@ -3,16 +3,16 @@
 A small utility to merge all data.json files from the webpack application
 
 DataJsonOptimizer is a small utility to merge all data.json files from the webpack application
- * and create following final data json file.
- *
- * a) game-data.json => It has all keys in hyphenated.
- * b) game-data-in-camel-case.json => It has all keys in camelcase to access in js.
- *
- * Why this?
- * Application has too many data.json files which is carrying the all game properties and
- * keys are in hyphenated. In implementation, we are using camelcase keys. For this, if we
- * start converting the all keys on the fly on client side then it slows down the whole application.
- * So we are creating the final json files on application compile/build time only.
+and create following final data json file.
+
+* game-data.json => It has all keys in hyphenated.
+* game-data-in-camel-case.json => It has all keys in camelcase to access in js.
+
+## Why this?
+Application has too many data.json files which is carrying the all game properties and
+keys are in hyphenated. In implementation, we are using camelcase keys. For this, if we
+start converting the all keys on the fly on client side then it slows down the whole application.
+So we are creating the final json files on application compile/build time only.
  
 ## Installation
 
