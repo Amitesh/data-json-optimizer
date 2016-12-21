@@ -13,7 +13,7 @@ Application has too many data.json files which is carrying the all game properti
 keys are in hyphenated. In implementation, we are using camelcase keys. For this, if we
 start converting the all keys on the fly on client side then it slows down the whole application.
 So we are creating the final json files on application compile/build time only.
- 
+
 ## Installation
 
   `npm install -D data-json-optimizer`
@@ -27,12 +27,13 @@ So we are creating the final json files on application compile/build time only.
       output: {
       },
       plugins: [
-        new DataJsonOptimizer()
+        new DataJsonOptimizer(),
+        new webpack.WatchIgnorePlugin([/game-data.*\.json$/])
       ]
     };
 ```
 
-### With webpack-multi-configurator plugin with angularity
+### Usage with webpack-multi-configurator plugin with angularity
 
 ```js
 var webpack           = require('webpack');
@@ -64,5 +65,5 @@ function addDataJsonOptimizer(configurator, options) {
 
 In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.
 
-[npm-badge]: https://img.shields.io/npm/v/opener-for-webpack.svg?style=flat-square
+[npm-badge]: https://img.shields.io/npm/v/data-json-optimizer.svg?style=flat-square
 [npm]: https://www.npmjs.com/package/data-json-optimizer

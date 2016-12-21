@@ -1,0 +1,40 @@
+{
+  "name": "data-json-optimizer",
+  "version": "1.0.0",
+  "description": "A small utility to merge all data.json files from the application",
+  "main": "lib/data-json-optimizer.js",
+  "files": [
+    "*.md",
+    "src/*.js",
+    "lib/*.js"
+  ],
+  "scripts": {
+    "build": "rimraf lib && babel ./src -d lib --ignore '__test__'",
+    "lint": "eslint src",
+    "test": "node_modules/.bin/mocha --reporter spec --compilers js:babel-core/register",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amitesh/data-json-optimizer.git"
+  },
+  "keywords": [
+    "data-json",
+    "optimizer"
+  ],
+  "author": "Amitesh Kumar",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-eslint": "^4.1.8",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.5.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^5.0.1",
+    "rimraf": "^2.5.2"
+  },
+  "bugs": {
+    "url": "https://github.com/Amitesh/data-json-optimizer/issues"
+  },
+  "homepage": "https://github.com/Amitesh/data-json-optimizer#readme"
+}
