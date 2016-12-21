@@ -1,6 +1,6 @@
 {
   "name": "data-json-optimizer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A small utility to merge all data.json files from the application",
   "main": "lib/data-json-optimizer.js",
   "files": [
