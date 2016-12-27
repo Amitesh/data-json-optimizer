@@ -80,6 +80,7 @@ function createFinalDataJsonFiles(appPath) {
  * @param content
  */
 function writeFile(outputFile, content) {
+  fs.unlinkSync(path.resolve(outputFile));
   fs.writeFile(path.resolve(outputFile), content, 'utf8');
 }
 
