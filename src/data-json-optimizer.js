@@ -31,8 +31,11 @@ const fs   = require('fs');
  */
 function sortFiles(files) {
   let sorted = _.sortBy(files, (o) => {
-      return (o.match(/\//g) || []).length;
-  });
+      return (o.match(/\//g) || []
+).
+  length;
+})
+  ;
   return sorted;
 }
 
@@ -80,7 +83,9 @@ function createFinalDataJsonFiles(appPath) {
  * @param content
  */
 function writeFile(outputFile, content) {
-  fs.unlinkSync(path.resolve(outputFile));
+  if (fs.existsSync(path.resolve(outputFile))) {
+    fs.unlinkSync(path.resolve(outputFile));
+  }
   fs.writeFile(path.resolve(outputFile), content, 'utf8');
 }
 
@@ -94,17 +99,17 @@ function writeFile(outputFile, content) {
 function formatKeyAsCamelCase(collection) {
   return _.each(collection, (o, key) => {
       var ccKey = _.isNumber(key) ? key : _.camelCase(key || '');
-    let oldValue = collection[ccKey];
+      let oldValue = collection[ccKey];
 
-    if (_.isObject(o)) {
-      let formattedValue = formatKeyAsCamelCase(o);
-      delete collection[key];
-      collection[ccKey] = oldValue ? formatKeyAsCamelCase(oldValue) : formattedValue;
-    } else {
-      delete collection[key];
-      collection[ccKey] = oldValue ? oldValue : o;
-    }
-  });
+      if (_.isObject(o)) {
+        let formattedValue = formatKeyAsCamelCase(o);
+        delete collection[key];
+        collection[ccKey] = oldValue ? formatKeyAsCamelCase(oldValue) : formattedValue;
+      } else {
+        delete collection[key];
+        collection[ccKey] = oldValue ? oldValue : o;
+      }
+    });
 }
 
 /**
@@ -129,7 +134,7 @@ export default class DataJsonOptimizer {
      * Convert the data.json files to final file.
      */
     compiler.plugin('compile', (params) => {
-      let appPath = compiler.context;
+        let appPath = compiler.context;
       createFinalDataJsonFiles(appPath);
     });
   }
